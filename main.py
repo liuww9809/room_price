@@ -26,7 +26,7 @@ headers = {
 }
 
 buildingID = os.environ['BUILDING_ID']
-url = f'http://124.95.133.164:7003/newbargain/download/findys/showPrice.jsp?buildingID={buildingID}'
+url = f'http://124.95.133.164:7003/newbargain/download/findys/showPrice.jsp?buildingID=595784E1-2976-4971-8191-D875F50C1D89'
 room_list = []
 
 
