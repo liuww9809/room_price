@@ -61,6 +61,7 @@ def buildingInfo():
     change_room = ''
     response = requests.get(url=url, headers=headers)
     html_data = response.text
+    print('html_data:''html_data')
     soup = BS(html_data, "lxml")
     divs = soup.find_all(xxx=re.compile("可售"))
 
