@@ -4,3 +4,6 @@ requests
 schedule
 beautifulsoup4
 lxml
+certifi
+cryptography
+pyOpenSSL
