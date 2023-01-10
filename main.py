@@ -57,6 +57,7 @@ def sendMail():
 
 
 def buildingInfo():
+    print('进入方法')
     change_room = ''
     response = requests.get(url=url, headers=headers)
     html_data = response.text
