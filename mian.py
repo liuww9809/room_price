@@ -26,7 +26,7 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
 }
 
-buildingID = '595784E1-2976-4971-8191-D875F50C1D89'
+buildingID = os.environ['BUILDING_ID']
 url = f'http://124.95.133.164:7003/newbargain/download/findys/showPrice.jsp?buildingID={buildingID}'
 room_list = []
 
