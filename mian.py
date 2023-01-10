@@ -20,7 +20,6 @@ mail_girl = os.environ['TO']  # 另一个邮箱的邮箱
 mail_pass = os.environ['PASS']  # 邮箱密码
 name_girl = "刘喂喂"  # 名字
 mail_port = 465  # smtp端口号
-
 headers = {
     'cookie': 'JSESSIONID=MR5Yj7ZR1hrNzDnQp3knNRhYYRnh4h5F2BkQYZJQBLGxcy8xy1Rj!569010957',
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
