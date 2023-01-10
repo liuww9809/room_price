@@ -1,0 +1,7 @@
+selenium
+pyemail
+requests
+schedule
+beautifulsoup4
+reduce
+lxml
