@@ -4,6 +4,9 @@ import re
 from bs4 import BeautifulSoup as BS
 from functools import reduce
 import schedule
+import struct
+import socket
+import select
 
 from email.mime.text import MIMEText
 from email.header import Header
