@@ -40,24 +40,24 @@ def buildingInfo():
         soup = BS(html_data, "lxml")
         divs = soup.find_all(xxx=re.compile("可售"))
         for div in divs:
-        td_x = div['xxx']
-        re_b = re.compile("<%s.*?>(.+?)<%s>" % ("/b", "br"), re.I | re.S)
-        # re_b = re.compile("</b.*?>(.+?)<br>", re.I | re.S)
-        # re_b = re.compile("(?<=<B>).*?(?=<br>)", re.I | re.S)
-        # ['房屋状态：', '房屋地址：', '房屋结构：', '房屋用途：', '建筑面积：', '户型：', '单价：', '总价：', '预售许可证号：']
-        room = re.findall(re_b, td_x)
-        room_json = {'room_number': re.findall('[(](.*?)[)]', room[1])[0],
-                     'area': room[4],
-                     'unit_price': room[5],
-                     'total_price': room[6]}
-        ret = reduce(lambda pre, cur: cur if cur['room_number'] == room_json['room_number'] else pre, room_list, None)
-        if ret:
-            if ret['unit_price'] != room_json['unit_price']:
-                change_room += f'{ret["room_number"]}：原价为{ret["unit_price"]}调价位{room_json["unit_price"]}\n' \
-                               f'原总价{ret["total_price"]}调价位{room_json["total_price"]}\n'
-        else:
-            room_list.append(room_json)
-        return change_room
+            td_x = div['xxx']
+            re_b = re.compile("<%s.*?>(.+?)<%s>" % ("/b", "br"), re.I | re.S)
+            # re_b = re.compile("</b.*?>(.+?)<br>", re.I | re.S)
+            # re_b = re.compile("(?<=<B>).*?(?=<br>)", re.I | re.S)
+            # ['房屋状态：', '房屋地址：', '房屋结构：', '房屋用途：', '建筑面积：', '户型：', '单价：', '总价：', '预售许可证号：']
+            room = re.findall(re_b, td_x)
+            room_json = {'room_number': re.findall('[(](.*?)[)]', room[1])[0],
+                         'area': room[4],
+                         'unit_price': room[5],
+                         'total_price': room[6]}
+            ret = reduce(lambda pre, cur: cur if cur['room_number'] == room_json['room_number'] else pre, room_list, None)
+            if ret:
+                if ret['unit_price'] != room_json['unit_price']:
+                    change_room += f'{ret["room_number"]}：原价为{ret["unit_price"]}调价位{room_json["unit_price"]}\n' \
+                                   f'原总价{ret["total_price"]}调价位{room_json["total_price"]}\n'
+            else:
+                room_list.append(room_json)
+            return change_room
     except smtplib.SMTPException as e:
         print("请求失败")
         return "失败"
@@ -69,8 +69,8 @@ def sendMail():
         smtpObj.login(mail_user, mail_pass)
     except smtplib.SMTPException as e:
         logger.info(e)
-#     content = buildingInfo()
-    content = '123'
+    content = buildingInfo()
+#     content = '123'
     if content == "":
         content += '\n数据无变化'
     message = MIMEText(content, 'plain', 'utf-8')
