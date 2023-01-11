@@ -22,7 +22,8 @@ name_girl = "刘喂喂"  # 名字
 mail_port = 465  # smtp端口号
 headers = {
     'cookie': 'JSESSIONID=MR5Yj7ZR1hrNzDnQp3knNRhYYRnh4h5F2BkQYZJQBLGxcy8xy1Rj!569010957',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
+    'Connection': 'close',
 }
 
 buildingID = os.environ['BUILDING_ID']
@@ -37,7 +38,7 @@ def buildingInfo():
     change_room = ''
     try:
         print("进入")
-        response = requests.get(url=url, headers=headers, timeout=300)
+        response = requests.get(url=url, headers=headers, timeout=600)
         print("请求成功")
         html_data = response.text
         soup = BS(html_data, "lxml")
