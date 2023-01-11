@@ -29,12 +29,15 @@ buildingID = os.environ['BUILDING_ID']
 url = f'http://124.95.133.164:7003/newbargain/download/findys/showPrice.jsp?buildingID={buildingID}'
 room_list = []
 
+requests.DEFAULT_RETRIES = 5  # 增加重试连接次数
+s = requests.session()
+s.keep_alive = False  # 关闭多余连接
 
 def buildingInfo():
     change_room = ''
     try:
         print("进入")
-        response = requests.get(url=url, headers=headers)
+        response = requests.get(url=url, headers=headers, timeout=300)
         print("请求成功")
         html_data = response.text
         soup = BS(html_data, "lxml")
