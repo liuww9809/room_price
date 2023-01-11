@@ -33,12 +33,14 @@ room_list = []
 requests.DEFAULT_RETRIES = 5  # 增加重试连接次数
 s = requests.session()
 s.keep_alive = False  # 关闭多余连接
+s.proxies = {"https": "111.225.153.216:8089", "http": "111.225.152.186:8089", }
+
 
 def buildingInfo():
     change_room = ''
     try:
         print("进入")
-        response = requests.get(url=url, headers=headers, timeout=600)
+        response = s.get(url=url, headers=headers, timeout=300)
         print("请求成功")
         html_data = response.text
         soup = BS(html_data, "lxml")
