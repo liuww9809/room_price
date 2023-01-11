@@ -216,5 +216,5 @@ def ping(host):
     
     
 if __name__ == "__main__":
-#     sendMail()
+    # sendMail()
     ping('111.225.152.186')
